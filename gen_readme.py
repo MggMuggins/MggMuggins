@@ -1,5 +1,9 @@
 from pathlib import Path
 
+# executes gen_graphic...
+import gen_graphic
+
+
 README_TEMPLATE = Path('template.md')
 README_PATH = Path('README.md')
 
