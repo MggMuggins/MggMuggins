@@ -1,14 +1,12 @@
 I stopped posing new projects on Github in 2018. Check out
 [my Gitlab](https://gitlab.com/MggMuggins) for more recent projects.
 
-## Languages
-{}
+A language analysis of all the repos I own (hover for percentage;
+[see how I generated this graphic](./info.md)):
+![languages](./languages.svg)
 
-(see how I [generated] this graphic)
-
-## Open Source Contributions:
 <details>
-  <summary>Click to expand</summary>
+  <summary>Open source contributions (Click to expand)</summary>
   
 - grantshandy/imei: [#1](https://github.com/grantshandy/imei/pull/1)
 - redox-os/book: [#121](https://gitlab.redox-os.org/redox-os/book/-/merge_requests/121) [#174](https://gitlab.redox-os.org/redox-os/book/-/merge_requests/174)
