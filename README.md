@@ -1,7 +1,7 @@
 I stopped posing new projects on Github in 2018. Check out
 [my Gitlab](https://gitlab.com/MggMuggins) for more recent projects.
 
-A language analysis of all the repos I own (hover for percentage;
+A language analysis of all the repos I own (
 [see how I generated this graphic](./info.md)):
 ![languages](./languages.svg)
 

@@ -6,47 +6,44 @@
     </mask>
   </defs>
   <g mask="url(#bar_mask)">
-    <rect fill="#dea584" height="20" width="68.5%" x="0%" y="0">
-      <title>Rust 68.5%</title>
+    <rect fill="#dea584" height="20" width="56.8%" x="0%" y="0">
+      <title>Rust 56.8%</title>
     </rect>
-    <rect fill="#f1e05a" height="20" width="6.4%" x="68.5%" y="0">
-      <title>JavaScript 6.4%</title>
+    <rect fill="#b07219" height="20" width="9.4%" x="56.8%" y="0">
+      <title>Java 9.4%</title>
     </rect>
-    <rect fill="#ba595e" height="20" width="5.5%" x="74.9%" y="0">
-      <title>D 5.5%</title>
+    <rect fill="#00ADD8" height="20" width="6.9%" x="66.2%" y="0">
+      <title>Go 6.9%</title>
     </rect>
-    <rect fill="#89e051" height="20" width="3.3%" x="80.4%" y="0">
-      <title>Shell 3.3%</title>
+    <rect fill="#ba595e" height="20" width="5.0%" x="73.10000000000001%" y="0">
+      <title>D 5.0%</title>
     </rect>
-    <rect fill="#00B4AB" height="20" width="3.0%" x="83.7%" y="0">
-      <title>Dart 3.0%</title>
+    <rect fill="#3572A5" height="20" width="4.4%" x="78.10000000000001%" y="0">
+      <title>Python 4.4%</title>
     </rect>
-    <rect fill="#3572A5" height="20" width="2.8%" x="86.7%" y="0">
-      <title>Python 2.8%</title>
+    <rect fill="#f1e05a" height="20" width="3.8%" x="82.50000000000001%" y="0">
+      <title>JavaScript 3.8%</title>
     </rect>
-    <rect fill="#b07219" height="20" width="2.7%" x="89.5%" y="0">
-      <title>Java 2.7%</title>
+    <rect fill="#555555" height="20" width="2.1%" x="86.30000000000001%" y="0">
+      <title>C 2.1%</title>
     </rect>
-    <rect fill="#02f88c" height="20" width="1.3%" x="92.2%" y="0">
-      <title>Ada 1.3%</title>
+    <rect fill="#00B4AB" height="20" width="1.8%" x="88.4%" y="0">
+      <title>Dart 1.8%</title>
     </rect>
-    <rect fill="#5e5086" height="20" width="1.1%" x="93.5%" y="0">
-      <title>Haskell 1.1%</title>
+    <rect fill="#f34b7d" height="20" width="1.6%" x="90.2%" y="0">
+      <title>C++ 1.6%</title>
     </rect>
-    <rect fill="#e34c26" height="20" width="1.0%" x="94.6%" y="0">
-      <title>HTML 1.0%</title>
+    <rect fill="#89e051" height="20" width="1.5%" x="91.8%" y="0">
+      <title>Shell 1.5%</title>
     </rect>
-    <rect fill="#563d7c" height="20" width="1.0%" x="95.6%" y="0">
-      <title>CSS 1.0%</title>
+    <rect fill="#ec915c" height="20" width="0.9%" x="93.3%" y="0">
+      <title>Zig 0.9%</title>
     </rect>
-    <rect fill="#e38c00" height="20" width="0.7%" x="96.6%" y="0">
-      <title>SQL 0.7%</title>
+    <rect fill="#02f88c" height="20" width="0.8%" x="94.2%" y="0">
+      <title>Ada 0.8%</title>
     </rect>
-    <rect fill="#3178c6" height="20" width="0.6%" x="97.3%" y="0">
-      <title>TypeScript 0.6%</title>
-    </rect>
-    <rect fill="gray" height="20" width="2.1000000000000085%" x="97.89999999999999%" y="0">
-      <title>Other 2.1000000000000085%</title>
+    <rect fill="gray" height="20" width="5.0%" x="95.0%" y="0">
+      <title>Other 5.0%</title>
     </rect>
   </g>
 </svg>

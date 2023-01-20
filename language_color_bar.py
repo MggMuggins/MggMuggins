@@ -15,6 +15,7 @@ from svgwrite.shapes import Rect
 
 
 USER = "MggMuggins"
+TOKEN_PATH = Path('tokens.json')
 
 REPO_DIR = Path('repos')
 REPO_FILE = Path('repos.json')
@@ -23,21 +24,38 @@ SVG_FILE = Path("languages.svg")
 
 LINGUIST_LANGS = "https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml"
 
-EXCLUDE_EXTENSIONS = [".json", ".toml", ".bat"]
+EXCLUDE_EXTENSIONS = [".json", ".toml", ".bat", ".xml"]
+DISPLAY_PERCENT_CUTOFF = 0.7
 
 BAR_HEIGHT = 20
 
 
-def fetch_github():
-    github_url = f"https://api.github.com/users/{USER}/repos"
+def get_auth_headers(service):
+    if not TOKEN_PATH.exists():
+        return {}
 
-    github_resp = requests.get(github_url)
+    with open(TOKEN_PATH, 'r') as token_file:
+        tokens = json.load(token_file)
+
+    if service not in tokens:
+        return {}
+
+    token = tokens[service]
+    return {
+        "Authorization": f"Bearer {token}",
+    }
+
+
+def fetch_github():
+    github_url = f"https://api.github.com/users/{USER}/repos?per_page=100"
+
+    github_resp = requests.get(github_url, headers=get_auth_headers("github"))
     github_resp.raise_for_status()
 
     github_repos = json.loads(github_resp.content)
 
     github_urls = [
-        {'name': repo['name'], 'url': repo['html_url']}
+        {'name': repo['name'], 'url': repo['ssh_url']}
         for repo in github_repos
         if not repo['fork']
     ]
@@ -50,13 +68,13 @@ def fetch_github():
 def fetch_gitlab():
     gitlab_url = f"https://gitlab.com/api/v4/users/{USER}/projects"
 
-    gitlab_resp = requests.get(gitlab_url)
+    gitlab_resp = requests.get(gitlab_url, headers=get_auth_headers("gitlab"))
     gitlab_resp.raise_for_status()
 
     gitlab_repos = json.loads(gitlab_resp.content)
 
     gitlab_urls = [
-        {'name': repo['name'], 'url': repo['web_url']}
+        {'name': repo['name'], 'url': repo['ssh_url_to_repo']}
         for repo in gitlab_repos
         if 'forked_from_project' not in repo
     ]
@@ -75,18 +93,6 @@ def reload_repos_list(url_file_path):
     with open(url_file_path, 'w') as url_file:
         json.dump(urls, url_file, indent=4)
 
-    return urls
-
-
-def load_repos_list(url_file_path):
-    """
-    Load repos.json
-    """
-    if not url_file_path.exists():
-        urls = reload_repos_list(url_file_path)
-    else:
-        with open(url_file_path, 'r') as url_file:
-            urls = json.load(url_file)
     return urls
 
 
@@ -138,11 +144,11 @@ def gen_percentages():
     percentages = {}
 
     for lang_name, info in repo_info.items():
-        print(f"{lang_name} code lines: {info['code']}")
-        percentage = info["code"] / total["code"]
+        # print(f"{lang_name} code lines: {info['code']}")
+        percentage = (info["code"] / total["code"]) * 100
 
-        if percentage >= 0.005:
-            percentages[lang_name] = round(percentage * 100, 1)
+        if percentage >= DISPLAY_PERCENT_CUTOFF:
+            percentages[lang_name] = round(percentage, 1)
 
     return percentages
 
@@ -233,15 +239,24 @@ if __name__ == "__main__":
         description="Draw a Github-style language summary color bar for some repos",
     )
     parser.add_argument(
+        "--reload",
+        help="Reload repos.json. Implies --fetch",
+        action='store_true',
+    )
+    parser.add_argument(
         "--fetch",
-        help="Reload repos.json and clone/update the repos",
+        help="Clone/Pull from all repos given in repos.json",
         action='store_true',
     )
 
     args = parser.parse_args()
 
-    if args.fetch:
+    if args.reload:
         urls = reload_repos_list(REPO_FILE)
+        update_repos(urls)
+    elif args.fetch:
+        with open(REPO_FILE, 'r') as url_file:
+            urls = json.load(url_file)
         update_repos(urls)
 
     colors = add_colors(gen_percentages())
