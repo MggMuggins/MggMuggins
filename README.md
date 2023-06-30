@@ -1,4 +1,4 @@
-I stopped posing new projects on Github in 2018. Check out
+I stopped posting new projects on Github in 2018. Check out
 [my Gitlab](https://gitlab.com/MggMuggins) for more recent projects.
 
 A language analysis of all the repos I own ([how?](./info.md)):
